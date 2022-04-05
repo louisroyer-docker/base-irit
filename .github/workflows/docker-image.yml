@@ -2,7 +2,7 @@ name: Docker Image CI
 
 on:
   schedule:
-    - cron: '00 04 * * *'
+    - cron: '00 04 * * Sat'
   push:
     branches: [ master ]
 
@@ -19,10 +19,14 @@ jobs:
         uses: docker/metadata-action@v3
         with:
           images: |
-            louisroyer/base-irit
+            ${{ secrets.DOCKERHUB_USERNAME }}/base-irit
           tags: |
-            type=schedule
+            type=schedule,pattern={{date 'YYYMMDD'}}
             type=sha
+          flavor: |
+            latest=true
+            prefix=
+            suffix=
       -
         name: Set up QEMU
         uses: docker/setup-qemu-action@v1
@@ -40,4 +44,5 @@ jobs:
         uses: docker/build-push-action@v2
         with:
           push: true
-          tags: ${{ steps.meta.ouputs.tags }}
+          tags: ${{ steps.meta.outputs.tags }}
+          labels: ${{ steps.meta.outputs.labels }}
