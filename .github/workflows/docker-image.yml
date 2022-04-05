@@ -3,8 +3,8 @@ name: Docker Image CI
 on:
   schedule:
     - cron: '00 04 * * Sat'
-#  push:
-#    branches: [ master ]
+  push:
+    branches: [ master ]
 
 jobs:
    docker:
@@ -21,7 +21,7 @@ jobs:
           images: |
             ${{ secrets.DOCKERHUB_USERNAME }}/base-irit
           tags: |
-            type=raw,pattern=bullseye-{{date 'YYYMMDD'}}-slim
+            type=raw,pattern=bullseye-{{date 'YYYMMDD'}}-{{sha}}-slim
           flavor: |
             latest=true
             prefix=
