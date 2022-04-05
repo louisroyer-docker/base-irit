@@ -21,7 +21,7 @@ jobs:
           images: |
             ${{ secrets.DOCKERHUB_USERNAME }}/base-irit
           tags: |
-            type=raw,enable=true,priority=100,prefix=bullseye-,suffix=-slim,value={{date 'YYYMMDD'}}-{{sha}}
+            type=raw,enable=true,priority=100,prefix=bullseye-,suffix=-slim,value={{date 'YYYY-MM-DD'}}-{{sha}}
           flavor: |
             latest=true
             prefix=
