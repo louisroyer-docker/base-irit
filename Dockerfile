@@ -1,4 +1,9 @@
 FROM debian:bullseye-slim
+
+LABEL maintainer="Louis Royer <louis.royer@irit.fr>" \
+      org.opencontainers.image.authors="Louis Royer <louis.royer@irit.fr>" \
+      org.opencontainers.image.source="https://github.com/louisroyer/docker-base-irit"
+
 RUN apt-get update -q && \
     DEBIAN_FRONTEND=non-interactive apt-get upgrade -qy && \
     DEBIAN_FRONTEND=non-interactive apt-get install -qy ca-certificates --no-install-recommends --no-install-suggests && \
