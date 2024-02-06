@@ -21,4 +21,3 @@ RUN apt-get update -q && \
     apt-get -o Acquire::AllowInsecureRepositories=true -o Acquire::AllowDowngradetoInsecureRepository=true update -q && \
     DEBIAN_FRONTEND=non-interactive apt-get -o APT::Get::AllowUnauthenticated=true install -qy deb-irit-archive-keyring --no-install-recommends --no-install-suggests && \
     rm -rf /var/lib/apt/lists/*
-
